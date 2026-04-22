@@ -1,0 +1,9 @@
+stages:
+  - test
+
+crystal-spec:
+  stage: test
+  image: crystallang/crystal:latest
+  script:
+    - crystal --version
+    - crystal spec
