@@ -13,17 +13,11 @@ This repository is a Crystal-first hardware/documentation generator for PCB/PCBA
 - Add or update specs for any feature work.
 
 ## Documentation model (DRY)
-- Prefer single-source design data under `boards/<board-id>/03-design.md`.
-- Audience-specific docs reference design anchors/ids rather than duplicating content.
-- Required board docs:
-  - `01-introduction.md`
-  - `02-quick-start.md`
-  - `03-design.md`
-  - `04-expansion.md`
-  - `05-demos.md`
-  - `06-support.md`
-  - `tutorials.md`
-  - `slides.md`
+- Prefer a single-source board content file under `boards/<board-id>/board.md`.
+- `board.md` must include sections for introduction, quick-start, design, expansion, demos, and support.
+- Audience-specific generated pages can split from `board.md` during generation.
+- `tutorials.md` and `slides.md` remain dedicated source files.
+- JSON-in-Markdown must be written as code-quoted assignment statements for parser-friendly fallback rendering.
 
 ## Parts library policy (KiCad best practices)
 - Use project-local symbol and footprint libraries committed with the board source.

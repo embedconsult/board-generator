@@ -9,18 +9,20 @@ Crystal project skeleton for generating PCB/PCBA manufacturing outputs and audie
 - `crystal spec`
 
 ## Board input layout
-Each board lives in `boards/<board-id>/` with these files:
-- `01-introduction.md`
-- `02-quick-start.md`
-- `03-design.md`
-- `04-expansion.md`
-- `05-demos.md`
-- `06-support.md`
+Each board lives in `boards/<board-id>/` with these source files:
+- `board.md` (single source sections: introduction, quick-start, design, expansion, demos, support)
 - `tutorials.md`
 - `slides.md`
 
 ## DRY documentation strategy
-`03-design.md` is the technical single source of truth. Other files should reference stable section ids and JSON block identifiers from `03-design.md` instead of re-stating specs.
+`board.md` is the single source of truth for docs sections 01-06. Generated outputs can split these sections into audience-specific pages.
+
+## JSON in Markdown style
+Use code-quoted assignment statements so parsers that ignore JSON still render meaningful context.
+
+```text
+section_meta = {"section":"design","canonical":true,"id":"design"}
+```
 
 ## Parts libraries
 This skeleton adopts KiCad community-oriented practices:
