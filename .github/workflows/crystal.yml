@@ -1,0 +1,14 @@
+name: crystal-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  spec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: crystal-lang/install-crystal@v1
+      - run: crystal --version
+      - run: crystal spec
