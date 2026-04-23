@@ -1,6 +1,6 @@
 # board-generator
 
-Crystal project skeleton for generating PCB/PCBA manufacturing outputs and audience-focused documentation from Markdown + JSON annotated source.
+Crystal project skeleton for generating PCB/PCBA manufacturing outputs and audience-focused documentation from Markdown source.
 
 ## Quick commands
 - `crystal run src/tasks/env_check.cr`
@@ -17,11 +17,18 @@ Each board lives in `boards/<board-id>/` with these source files:
 ## DRY documentation strategy
 `board.md` is the single source of truth for docs sections 01-06. Generated outputs can split these sections into audience-specific pages.
 
-## JSON in Markdown style
-Use code-quoted assignment statements so parsers that ignore JSON still render meaningful context.
+## Pandoc Markdown metadata style
+Use Pandoc-native constructs for clean source and robust parsing:
+- YAML metadata blocks for document metadata,
+- fenced Div attributes for section-scoped metadata,
+- optional header attributes for stable anchors.
 
-```text
-section_meta = {"section":"design","canonical":true,"id":"design"}
+Example:
+
+```markdown
+::: {.section-meta section="design" purpose="usage-and-modification" id="design"}
+Canonical design metadata for this section.
+:::
 ```
 
 ## Parts libraries

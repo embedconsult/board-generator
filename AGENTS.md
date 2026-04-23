@@ -4,7 +4,7 @@
 This repository is a Crystal-first hardware/documentation generator for PCB/PCBA deliverables.
 
 ## Source-of-truth policy
-- Canonical authoring formats are Crystal (`.cr`) and Markdown (`.md`) with JSON annotations.
+- Canonical authoring formats are Crystal (`.cr`) and Markdown (`.md`) with structured metadata.
 - Generated artifacts must not be manually edited.
 - `work/` is ephemeral for back-annotation imports and transient outputs.
 
@@ -17,7 +17,7 @@ This repository is a Crystal-first hardware/documentation generator for PCB/PCBA
 - `board.md` must include sections for introduction, quick-start, design, expansion, demos, and support.
 - Audience-specific generated pages can split from `board.md` during generation.
 - `tutorials.md` and `slides.md` remain dedicated source files.
-- JSON-in-Markdown must be written as code-quoted assignment statements for parser-friendly fallback rendering.
+- Prefer Pandoc Markdown metadata patterns (YAML metadata blocks, fenced Div attributes, and header attributes) for clean source rendering.
 
 ## Parts library policy (KiCad best practices)
 - Use project-local symbol and footprint libraries committed with the board source.

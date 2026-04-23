@@ -1,76 +1,62 @@
+---
+board: example-board
+doc: board
+canonical: true
+---
+
 # Example Board
 
-```text
-board_meta = {"board":"example-board","doc":"board","canonical":true}
-```
+## 01 Introduction {#introduction}
 
-## 01 Introduction
-
-```text
-section_meta = {"section":"introduction","purpose":"purchase-decision","id":"introduction"}
-```
-
+::: {.section-meta section="introduction" purpose="purchase-decision"}
 Marketing-level introduction, including references to rendered PCB annotations.
+:::
 
-## 02 Quick Start
+## 02 Quick Start {#quick-start}
 
-```text
-section_meta = {"section":"quick-start","purpose":"new-owner-confidence","id":"quick-start"}
-```
-
+::: {.section-meta section="quick-start" purpose="new-owner-confidence"}
 Quick setup steps for first successful use.
+:::
 
-## 03 Design
+## 03 Design {#design}
 
-```text
-section_meta = {"section":"design","purpose":"usage-and-modification","id":"design"}
-```
-
-### Board overview
-
-```text
-design_anchor = {"id":"board-overview","rev":"A0"}
-```
-
+::: {.section-meta section="design" purpose="usage-and-modification"}
 Primary design source for features, interfaces, and schematic intent.
+:::
 
-### Power and boot
+### Board overview {#board-overview}
 
-```text
-design_anchor = {"id":"power-and-boot","vin":"5V"}
-```
+::: {.design-anchor rev="A0"}
+Defines major interfaces and design intent.
+:::
 
+### Power and boot {#power-and-boot}
+
+::: {.design-anchor vin="5V"}
 Power domain and boot sequencing source section.
+:::
 
-### Libraries
+### Libraries {#libraries}
 
-```text
-design_anchor = {"id":"libraries","policy":"project-local-kicad"}
-```
-
+::: {.design-anchor policy="project-local-kicad"}
 - Symbols and footprints are project-local and revision pinned.
 - 3D models are versioned with deterministic references.
+:::
 
-## 04 Expansion
+## 04 Expansion {#expansion}
 
-```text
-section_meta = {"section":"expansion","purpose":"addon-development","id":"expansion"}
-```
-
+::: {.section-meta section="expansion" purpose="addon-development"}
 Connector pinouts and extension guidance should reference anchors in the design section.
+:::
 
-## 05 Demos
+## 05 Demos {#demos}
 
-```text
-section_meta = {"section":"demos","purpose":"capability-demonstration","id":"demos"}
-```
-
+::: {.section-meta section="demos" purpose="capability-demonstration"}
 Step-by-step runnable examples should reference electrical limits from the design section.
+:::
 
-## 06 Support
+## 06 Support {#support}
 
-```text
-section_meta = {"section":"support","purpose":"buyer-and-business-data","id":"support"}
-```
-
+::: {.section-meta section="support" purpose="buyer-and-business-data"}
 Includes dimensions, packaging, certifications, change history, and support escalation.
+:::
