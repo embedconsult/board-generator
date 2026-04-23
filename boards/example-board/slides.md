@@ -1,5 +1,4 @@
 ---
-board: example-board
 doc: slides
 purpose: teaching-lectures
 ---

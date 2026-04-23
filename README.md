@@ -4,8 +4,9 @@ Crystal project skeleton for generating PCB/PCBA manufacturing outputs and audie
 
 ## Quick commands
 - `crystal run src/tasks/env_check.cr`
-- `crystal run src/tasks/generate_board.cr -- --board example-board --variant public`
-- `crystal run src/tasks/generate_docs.cr -- --board example-board`
+- `crystal run src/tasks/generate_board.cr -- --board <board-id> --variant public`
+- `crystal run src/tasks/generate_docs.cr -- --board <board-id>`
+- `crystal run src/tasks/lint_markdown.cr`
 - `crystal spec`
 
 ## Board input layout
@@ -14,22 +15,44 @@ Each board lives in `boards/<board-id>/` with these source files:
 - `tutorials.md`
 - `slides.md`
 
-## DRY documentation strategy
-`board.md` is the single source of truth for docs sections 01-06. Generated outputs can split these sections into audience-specific pages.
+## Strict Pandoc Markdown contract
+All board docs must use Pandoc-friendly Markdown with YAML front matter.
 
-## Pandoc Markdown metadata style
-Use Pandoc-native constructs for clean source and robust parsing:
-- YAML metadata blocks for document metadata,
-- fenced Div attributes for section-scoped metadata,
-- optional header attributes for stable anchors.
+### 1) `board.md` (canonical)
+```yaml
+---
+board: <board-id>
+doc: board
+canonical: true
+---
+```
 
-Example:
+### 2) `tutorials.md` and `slides.md` (referential)
+```yaml
+---
+doc: tutorials|slides
+purpose: <purpose-string>
+---
+```
+
+Do **not** repeat `board: <board-id>` in non-canonical files; board identity is implied by directory and canonical `board.md`.
+
+### 3) Section metadata
+Use Pandoc fenced Div attributes:
 
 ```markdown
-::: {.section-meta section="design" purpose="usage-and-modification" id="design"}
+::: {.section-meta section="design" purpose="usage-and-modification"}
 Canonical design metadata for this section.
 :::
 ```
+
+## Opinionated linting (Crystal)
+Run `crystal run src/tasks/lint_markdown.cr` before committing. Current rules enforce:
+- YAML front matter required in every `boards/**/*.md` file,
+- `board.md` must define `board`, `doc: board`, and `canonical: true`,
+- non-canonical docs must not include a `board` field,
+- non-canonical docs must define `doc` and `purpose`,
+- no trailing whitespace.
 
 ## Parts libraries
 This skeleton adopts KiCad community-oriented practices:

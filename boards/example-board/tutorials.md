@@ -1,5 +1,4 @@
 ---
-board: example-board
 doc: tutorials
 purpose: teaching-labs
 ---

@@ -17,3 +17,9 @@ describe BoardGenerator::Tasks::GenerateDocs do
     BoardGenerator::Tasks::GenerateDocs.responds_to?(:run).should be_true
   end
 end
+
+describe BoardGenerator::Tasks::LintMarkdown do
+  it "exposes run" do
+    BoardGenerator::Tasks::LintMarkdown.responds_to?(:run).should be_true
+  end
+end

@@ -9,9 +9,10 @@ module BoardGenerator
       when "env_check"      then Tasks::EnvCheck.run
       when "generate_board" then Tasks::GenerateBoard.run
       when "generate_docs"  then Tasks::GenerateDocs.run
+      when "lint_markdown" then Tasks::LintMarkdown.run
       else
         STDERR.puts "Unknown task: #{task}"
-        STDERR.puts "Supported tasks: env_check, generate_board, generate_docs"
+        STDERR.puts "Supported tasks: env_check, generate_board, generate_docs, lint_markdown"
         exit 1
       end
     end
